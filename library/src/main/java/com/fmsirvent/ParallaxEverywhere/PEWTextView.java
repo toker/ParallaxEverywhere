@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Point;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Display;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
@@ -157,6 +158,8 @@ public class PEWTextView extends TextView {
     }
 
     private void applyParallax() {
+		//Log.i("PEWTextView", "applyParallax() called");
+
         int[] location = new int[2];
         getLocationOnScreen(location);
 

@@ -64,7 +64,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/alicante_explanada" />
 
-                <com.fmsirvent.ParallaxEverywhere.PEWTextView
+                <!--<com.fmsirvent.ParallaxEverywhere.PEWTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -74,7 +74,7 @@
                     pew:block_parallax_x="true"
                     pew:parallax_x="160dp"
                     pew:parallax_y="160dp"
-                    pew:reverse="reverseY" />
+                    pew:reverse="reverseY" />-->
 
             </FrameLayout>
 
