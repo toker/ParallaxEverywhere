@@ -55,7 +55,7 @@ public class PEWImageView  extends ImageView {
 		mSeq = new AtomicInteger(0);
 	}
 
-	private int framePathPx = 350; // imageview "frame" path
+	private int framePathPx = 400; // imageview "frame" path
 	private float deltaYPx = 0.0f;
 	private float itemPathPx = 0.0f;
 
@@ -372,8 +372,8 @@ public class PEWImageView  extends ImageView {
 		//framePathPx = 0;
 		if (framePathPx != 0) {
 			float locationY = (float) location[1];
-			locationY = (int)(locationY - 1.4* viewHeight);
-			float newLocationY = (locationY / screenHeight) + deltaYPx;
+			locationY = (int)(locationY - 1.4 * viewHeight);
+			float newLocationY = locationY / screenHeight + deltaYPx;
 
 			if (mId == 3) {
 				Log.i("PEWImageView", "internal_id:" + mId + ", locationY=" + locationY);

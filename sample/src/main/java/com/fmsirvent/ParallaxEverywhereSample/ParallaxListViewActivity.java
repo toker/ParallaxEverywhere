@@ -11,9 +11,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.fmsirvent.ParallaxEverywhereSample.model.CustomData;
+import com.fmsirvent.ParallaxEverywhereSample.view.ParallaxedImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,21 +75,22 @@ public class ParallaxListViewActivity extends Activity {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 
-			ViewHolder viewHolder = null;
+			ViewHolder2 viewHolder = null;
 			if (convertView == null) {
-				convertView = mInflater.inflate(R.layout.listitem, null);
+				convertView = mInflater.inflate(R.layout.listitem2, null);
 
-				viewHolder = new ViewHolder();
-				viewHolder.image = (ImageView)convertView.findViewById(R.id.image);
+				viewHolder = new ViewHolder2();
+				viewHolder.parallaxedImage = (ParallaxedImageView)convertView.findViewById(R.id.image_piv);
 				viewHolder.text = (TextView)convertView.findViewById(R.id.text);
 				convertView.setTag(viewHolder);
 			} else {
-				viewHolder = (ViewHolder) convertView.getTag();
+				viewHolder = (ViewHolder2) convertView.getTag();
 			}
 
 			CustomData dataEntry = mDataList.get(position);
 			viewHolder.text.setText(dataEntry.text);
-			viewHolder.image.setImageBitmap(dataEntry.getBitmap());
+			//viewHolder.parallaxedImage.setImageBitmap(dataEntry.getBitmap());
+			viewHolder.parallaxedImage.setImages();
 
 			return convertView;
 		}
@@ -95,6 +98,11 @@ public class ParallaxListViewActivity extends Activity {
 
 	public static class ViewHolder {
 		ImageView image;
+		TextView text;
+	}
+
+	public static class ViewHolder2 {
+		ParallaxedImageView parallaxedImage;
 		TextView text;
 	}
 
@@ -106,7 +114,8 @@ public class ParallaxListViewActivity extends Activity {
 		Bitmap lbitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.img_2);
 		Bitmap lbitmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.img_3);
 		Bitmap lbitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.img_4);
-		/*Bitmap lbitmap5 = BitmapFactory.decodeResource(getResources(), R.drawable.img_5);
+		Bitmap lbitmap5 = BitmapFactory.decodeResource(getResources(), R.drawable.img_6);
+		/*
 		Bitmap lbitmap6 = BitmapFactory.decodeResource(getResources(), R.drawable.img_6);
 		Bitmap lbitmap7 = BitmapFactory.decodeResource(getResources(), R.drawable.img_7);
 		Bitmap lbitmap8 = BitmapFactory.decodeResource(getResources(), R.drawable.img_8);
@@ -118,7 +127,7 @@ public class ParallaxListViewActivity extends Activity {
 		data.add(new CustomData("test_3", lbitmap1));
 		data.add(new CustomData("test_4", lbitmap));
 		data.add(new CustomData("test_5", lbitmap));
-		data.add(new CustomData("test_6", lbitmap));
+		data.add(new CustomData("test_6", lbitmap5));
 		data.add(new CustomData("test_7", lbitmap));
 		data.add(new CustomData("test_8", lbitmap));
 		data.add(new CustomData("test_9", lbitmap));
@@ -127,9 +136,9 @@ public class ParallaxListViewActivity extends Activity {
 		data.add(new CustomData("test_12", lbitmap));
 		data.add(new CustomData("test_13", lbitmap2));
 		data.add(new CustomData("test_14", lbitmap));
-		data.add(new CustomData("test_15", lbitmap));
+		data.add(new CustomData("test_15", lbitmap5));
 		data.add(new CustomData("test_16", lbitmap));
-		data.add(new CustomData("test_17", lbitmap));
+		data.add(new CustomData("test_17", lbitmap5));
 		data.add(new CustomData("test_18", lbitmap));
 
 		return data;
