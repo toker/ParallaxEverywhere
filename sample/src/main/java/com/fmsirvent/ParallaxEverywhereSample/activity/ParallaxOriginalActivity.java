@@ -1,4 +1,4 @@
-package com.fmsirvent.ParallaxEverywhereSample;
+package com.fmsirvent.ParallaxEverywhereSample.activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -14,10 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.fmsirvent.ParallaxEverywhereSample.R;
+
 import java.util.Locale;
 
 
-public class ParallaxEverywhereSample extends Activity implements ActionBar.TabListener {
+public class ParallaxOriginalActivity extends Activity implements ActionBar.TabListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide

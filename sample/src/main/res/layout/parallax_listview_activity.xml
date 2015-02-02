@@ -4,14 +4,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp"
-    android:background="@android:color/white">
+    android:layout_marginTop="0dp"
+    android:layout_marginBottom="0dp"
+    android:background="@color/parallax_background_color">
 
     <ListView
         android:id="@+id/parallax_lv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
         android:paddingLeft="9dp"
         android:paddingRight="9dp"
         android:clipToPadding="false"

@@ -5,6 +5,11 @@
     <string name="title_section1">Alicante</string>
     <string name="title_section2">Barcelona</string>
 
+    <string name="origin_parallax_actitivy_name">Origin parallax</string>
+    <string name="imageview_parallax_activity_name">ImageView parall</string>
+    <string name="staggeredgrid_parallax_activity_name">Staggered grid view parall</string>
+    <string name="about_activity_name">About</string>
+
     <string name="action_settings">About</string>
 
     <string name="alicante_texto_1">"Alicante (Spanish: [ali'kante]), or Alacant (Valencian: [ala'kant]), both official names, is a city and port in Spain on the Costa Blanca, the capital of the province of Alicante and of the comarca of Alacantí, in the south of the Valencian Community. It is also a historic Mediterranean port. The population of the city of Alicante proper was 334,329, estimated as of 2011, ranking as the second-largest Valencian city.[1] Including nearby municipalities, the Alicante conurbation had 462,281 residents.[2] The population of the metropolitan area (including Elche and satellite towns) was 771,061 as of 2011 estimates, ranking as the eighth-largest metropolitan area of Spain.[3]"</string>

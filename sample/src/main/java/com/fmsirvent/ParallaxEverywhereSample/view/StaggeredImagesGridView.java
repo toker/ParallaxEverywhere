@@ -256,6 +256,7 @@ public class StaggeredImagesGridView extends FrameLayout /*implements View.OnCli
     }*/
 
 	private String [] urls = {
+            "http://www.nat-geo.ru/images/upload/ph/photo/d71_3028_1300_1422531967_full.jpg",
 			"http://farm7.staticflickr.com/6101/6853156632_6374976d38_c.jpg",
 			"http://farm8.staticflickr.com/7232/6913504132_a0fce67a0e_c.jpg",
 			"http://farm5.staticflickr.com/4133/5096108108_df62764fcc_b.jpg",

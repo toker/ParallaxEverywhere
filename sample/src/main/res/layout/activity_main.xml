@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <Button
+        android:id="@+id/origin_parallax"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="origin parallax" />
+
+    <Button
+        android:id="@+id/list_images_parallax"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="imageview parallax" />
+
+    <Button
+        android:id="@+id/list_grid_images_parallax"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="staggeredgrid parallax" />
+
+    <Button
+        android:id="@+id/about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="about" />
+
+</LinearLayout>

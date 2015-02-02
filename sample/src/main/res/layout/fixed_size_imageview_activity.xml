@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--<ImageView-->
+        <!--android:layout_height="228dp"-->
+        <!--<com.fmsirvent.ParallaxEverywhereSample.view.ImageViewFixedSize-->
+        <!--android:src="@drawable/img_0"-->
+        <com.fmsirvent.ParallaxEverywhereSample.view.ParallaxedImageView2
+            android:layout_width="match_parent"
+            android:layout_height="190dp"/>
+
+        <com.fmsirvent.ParallaxEverywhereSample.view.ParallaxedImageView2
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:src="@drawable/img_1" />
+
+        <com.fmsirvent.ParallaxEverywhereSample.view.ParallaxedImageView2
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:src="@drawable/img_2" />
+
+        <com.fmsirvent.ParallaxEverywhereSample.view.ParallaxedImageView2
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:src="@drawable/img_3" />
+
+        <com.fmsirvent.ParallaxEverywhereSample.view.ParallaxedImageView2
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:src="@drawable/alicante_luceros" />
+
+    </LinearLayout>
+</ScrollView>
