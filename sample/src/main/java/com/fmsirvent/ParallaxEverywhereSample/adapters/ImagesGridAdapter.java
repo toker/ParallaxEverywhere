@@ -13,14 +13,22 @@ import android.widget.TextView;
 import com.fmsirvent.ParallaxEverywhereSample.R;
 import com.fmsirvent.ParallaxEverywhereSample.model.CustomData;
 import com.fmsirvent.ParallaxEverywhereSample.view.ParallaxStaggeredImagesGridLayout;
+import com.fmsirvent.ParallaxEverywhereSample.view.ParallaxedImageView2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by toker-rg on 03.02.15.
  */
 public class ImagesGridAdapter extends BaseAdapter {
+
+	private final int SINGLE_IMAGE_TYPE = 0;
+	private final int GRID_IMAGE_TYPE = 1;
+	private final int NUMBER_OF_TYPES = 2;
+
+	private Random mRandom;
 
     List<CustomData> mDataList;
     LayoutInflater mInflater;
@@ -32,6 +40,8 @@ public class ImagesGridAdapter extends BaseAdapter {
         mContext = context;
 
         setData(createDumbData());
+
+		mRandom = new Random();
     }
 
     public void setData(List<CustomData> data) {
@@ -45,7 +55,7 @@ public class ImagesGridAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return mDataList.get(position);
     }
 
     @Override
@@ -53,26 +63,62 @@ public class ImagesGridAdapter extends BaseAdapter {
         return 0;
     }
 
-    @Override
+	@Override
+	public int getViewTypeCount() {
+		return NUMBER_OF_TYPES;
+	}
+
+	@Override
+	public int getItemViewType(int position) {
+
+		CustomData data = (CustomData) getItem(position);
+		return data.getType();
+	}
+
+	@Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         ViewHolder viewHolder = null;
-        if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.listitem2, null);
+		ViewHolder3 viewHolder3 = null;
+		int type = getItemViewType(position);
 
-            viewHolder = new ViewHolder();
-            viewHolder.parallaxGridLayout = (ParallaxStaggeredImagesGridLayout)convertView.
-                    findViewById(R.id.images_grid);
-            viewHolder.text = (TextView)convertView.findViewById(R.id.text);
-            convertView.setTag(viewHolder);
+        if (convertView == null) {
+			if (type == SINGLE_IMAGE_TYPE) {
+				convertView = mInflater.inflate(R.layout.listitem3, null);
+
+				viewHolder3 = new ViewHolder3();
+				viewHolder3.parallaxedImage = (ParallaxedImageView2)convertView.
+						findViewById(R.id.image_piv2);
+				viewHolder3.text = (TextView)convertView.findViewById(R.id.text);
+				convertView.setTag(viewHolder3);
+			} else {
+				convertView = mInflater.inflate(R.layout.listitem2, null);
+
+				viewHolder = new ViewHolder();
+				viewHolder.parallaxGridLayout = (ParallaxStaggeredImagesGridLayout) convertView.
+						findViewById(R.id.images_grid);
+				viewHolder.text = (TextView) convertView.findViewById(R.id.text);
+				convertView.setTag(viewHolder);
+			}
         } else {
-            viewHolder = (ViewHolder) convertView.getTag();
+			if (type == SINGLE_IMAGE_TYPE) {
+				viewHolder3 = (ViewHolder3) convertView.getTag();
+			} else {
+				viewHolder = (ViewHolder) convertView.getTag();
+			}
         }
 
-        CustomData dataEntry = mDataList.get(position);
-        viewHolder.text.setText(dataEntry.text);
-        viewHolder.parallaxGridLayout.setImages();
-        viewHolder.parallaxGridLayout.setTag(dataEntry.text);
+		CustomData dataEntry = mDataList.get(position);
+
+		if (type == SINGLE_IMAGE_TYPE) {
+			viewHolder3.text.setText(dataEntry.text);
+			viewHolder3.parallaxedImage.setImageBitmap(dataEntry.getBitmap());
+			viewHolder3.parallaxedImage.setTag(dataEntry.text);
+		} else {
+			viewHolder.text.setText(dataEntry.text);
+			viewHolder.parallaxGridLayout.setImages();
+			viewHolder.parallaxGridLayout.setTag(dataEntry.text);
+		}
 
         return convertView;
     }
@@ -81,6 +127,11 @@ public class ImagesGridAdapter extends BaseAdapter {
         ParallaxStaggeredImagesGridLayout parallaxGridLayout;
         TextView text;
     }
+
+	public static class ViewHolder3 {
+		ParallaxedImageView2 parallaxedImage;
+		TextView text;
+	}
 
     private ArrayList<CustomData> createDumbData() {
         ArrayList<CustomData> data = new ArrayList<>();

@@ -18,6 +18,8 @@ import android.widget.ScrollView;
 import com.fmsirvent.ParallaxEverywhereSample.R;
 import com.fmsirvent.ParallaxEverywhereSample.util.Logger;
 
+import java.util.Random;
+
 /**
  * Created by toker-rg on 02.02.15.
  */
@@ -61,6 +63,7 @@ public class ParallaxStaggeredImagesGridLayout extends ScrollView {
 
         inflate(getContext(), R.layout.layout_parallax_stagered_images_grid, this);
         mImagesGridView = (StaggeredImagesGridView)findViewById(R.id.parall_content_sigv);
+
     }
 
     @Override
