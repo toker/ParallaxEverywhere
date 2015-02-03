@@ -11,12 +11,11 @@
         android:layout_height="100dp"
         android:background="@android:color/holo_orange_dark" />
 
-    <!--<com.fmsirvent.ParallaxEverywhereSample.view.ParallaxedImageView2-->
-    <!--android:id="@+id/image_piv2"-->
+    <!--android:layout_height="190dp"-->
     <com.fmsirvent.ParallaxEverywhereSample.view.ParallaxStaggeredImagesGridLayout
         android:id="@+id/images_grid"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="280dp"
         android:fillViewport="false"
         android:background="@android:color/holo_green_dark"/>
 

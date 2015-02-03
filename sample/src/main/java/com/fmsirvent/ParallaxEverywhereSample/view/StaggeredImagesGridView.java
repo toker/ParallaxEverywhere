@@ -312,12 +312,6 @@ public class StaggeredImagesGridView extends FrameLayout /*implements View.OnCli
 			"http://pixabay.com/static/uploads/photo/2014/06/04/16/58/cigar-362183_640.jpg",
 			"http://pixabay.com/static/uploads/photo/2013/05/12/18/55/cigarette-110849_640.jpg",
 			"http://pixabay.com/static/uploads/photo/2014/07/08/09/20/barbecue-386602_640.jpg",
-			"http://pixabay.com/static/uploads/photo/2014/09/16/17/22/meat-448494_640.jpg",
-			"http://freelargephotos.com/400232_l.jpg",
-			"http://freelargephotos.com/000134_l.jpg",
-			"http://freelargephotos.com/100541_l.jpg",
-			"http://freelargephotos.com/701681_l.jpg",
-			"http://freelargephotos.com/701653_l.jpg",
-			"http://freelargephotos.com/701838_l.jpg"
+			"http://pixabay.com/static/uploads/photo/2014/09/16/17/22/meat-448494_640.jpg"
 	};
 }

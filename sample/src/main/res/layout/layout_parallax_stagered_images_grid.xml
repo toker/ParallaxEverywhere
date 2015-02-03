@@ -7,13 +7,23 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/holo_green_dark"
-    android:fillViewport="true"
-    android:scrollbars="none" >
+    android:orientation="vertical" >
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:background="@android:color/transparent" />
+
+    <!--android:layout_height="395dp"-->
     <com.fmsirvent.ParallaxEverywhereSample.view.StaggeredImagesGridView
         android:id="@+id/parall_content_sigv"
         android:layout_width="match_parent"
-        android:layout_height="395dp"
+        android:layout_height="300dp"
         android:layout_gravity="center_vertical" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="18dp"
+        android:background="@android:color/transparent" />
 
 </LinearLayout>

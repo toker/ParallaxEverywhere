@@ -21,12 +21,15 @@ import com.fmsirvent.ParallaxEverywhere.Utils.InterpolatorSelector;
 
 import java.lang.Override;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Logger;
 
 /**
  * Created by fmsirvent on 03/11/14.
  */
 
 public class PEWImageView  extends ImageView {
+
+	private static final String TAG = PEWImageView.class.toString();
 
     private boolean mIsReverseX = false;
     private boolean mIsReverseY = false;
@@ -136,7 +139,7 @@ public class PEWImageView  extends ImageView {
         mOnScrollChangedListener = new ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
-                applyParallax2();
+                applyParallax();
             }
         };
 
@@ -146,10 +149,8 @@ public class PEWImageView  extends ImageView {
                 viewHeight = (float) getHeight();
                 viewWidth = (float) getWidth();
 
-				Log.i("PEWImageView", "onGlobalLayout, imageview size: (" + viewWidth + "," +
-						viewHeight + ")");
 
-                applyParallax2();
+                applyParallax();
             }
         };
 
@@ -273,34 +274,6 @@ public class PEWImageView  extends ImageView {
 		deltaYPx = framePathPx / itemPathPx;
     }
 
-	/*
-	TODO Как сделано сейчас
-	1. Вычисляем scrollSpaceY - расстояние, которое должно пройти "окошко" по картинке при
-	при пролистывании пункта списка.
-	Берем высоту картинки из нее вычитаем высоту "окошка", т.е. ImageView, содержащего картинку.
-
-	2. Вычисляем scrollDelta шаг параллакс-прокрутки
-	Берем текущую Y-координату, прибавляем к ней половину высоты данного ImageView.
-	Делим эту сумму на высоту экрана.
-
-	3. Вычисляем scrollValue величину сдвига "окошка"
-	scrollDelta умножаем на scrollSpaceY
-
-	4. Сдвигаем окошко на scrollValue
-	* */
-
-	/*
-	TODO Как нужно:
-	1. При листании вверх "окошко" движется по картинке вверх
-	2. Скорость движения "окошка" должна быть постоянной и не зависеть от высоты картинки
-	3. Скорость движения "окошка" должна быть меньше скорости основного скролла
-	4.
-	* */
-
-	/*
-	TODO Алгоритм
-	1.
-	 */
 
 	private void applyParallax() {
 		Log.i("PEWImageView", "applyParallax() called");
@@ -310,35 +283,20 @@ public class PEWImageView  extends ImageView {
 
         if (scrollSpaceY != 0) {
 			float locationY = (float) location[1];
-			//float locationUsableY = locationY + viewHeight / 2;
-			float scrollDeltaY = (locationY - 580) / (screenHeight);
-			scrollDeltaY -= scrollDeltaY*0.1;
-			float interpolatedScrollDeltaY = interpolator.getInterpolation(scrollDeltaY);
-
-			/*float locationY = (float) location[1];
 			float locationUsableY = locationY + viewHeight / 2;
 			float scrollDeltaY = locationUsableY / (screenHeight);
-			float interpolatedScrollDeltaY = interpolator.getInterpolation(scrollDeltaY);*/
+			//scrollDeltaY -= scrollDeltaY*0.1;
+			float interpolatedScrollDeltaY = interpolator.getInterpolation(scrollDeltaY);
 
-			if (mId == 3) {
-				Log.i("PEWImageView", "internal_id:" + mId + ", scrollSpaceY=" + scrollSpaceY);
-				Log.i("PEWImageView", "internal_id:" + mId + ", locationY=" + locationY);
-				//Log.i("PEWImageView", "internal_id:" + mId + ", locationUsableY=" + locationUsableY);
-				Log.i("PEWImageView", "internal_id:" + mId + ", scrollDeltaY=" + scrollDeltaY);
-				Log.i("PEWImageView", "internal_id:" + mId + ", interpolatedScrollDeltaY=" + interpolatedScrollDeltaY);
-			}
 
 			int scrollValue = 0;
 			if (mIsReverseY) {
-				//Log.i("PEWImageView", "mIsReverseY");
-				/*scrollValue = (int) (Math.min(Math.max((0.5f - interpolatedScrollDeltaY), -0.5f),
-						0.5f) * -scrollSpaceY);*/
-				scrollValue = (int) (interpolatedScrollDeltaY * (-scrollSpaceY) / 2);
+				scrollValue = (int) (Math.min(Math.max((0.5f - interpolatedScrollDeltaY), -0.5f),
+						0.5f) * -scrollSpaceY);
 				setMyScrollY(scrollValue);
 			} else {
-				/*scrollValue = (int) (Math.min(Math.max((0.5f - interpolatedScrollDeltaY), -0.5f),
-						0.5f) * scrollSpaceY);*/
-				scrollValue = (int) (interpolatedScrollDeltaY * scrollSpaceY / 2);
+				scrollValue = (int) (Math.min(Math.max((0.5f - interpolatedScrollDeltaY), -0.5f),
+						0.5f) * scrollSpaceY);
 				setMyScrollY(scrollValue);
 			}
         }
@@ -404,8 +362,8 @@ public class PEWImageView  extends ImageView {
     }
 
     private void setMyScrollY(int value) {
-		Log.i("PEWImageView", "internal_id:" + mId + ", setMyScrollY(), value=" + value);
-		Log.i("PEWImageView", "===============================");
+		Log.i(TAG, "internal_id:" + mId + ", setMyScrollY(), value=" + value);
+		Log.i(TAG, "===============================");
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             setScrollY(value);

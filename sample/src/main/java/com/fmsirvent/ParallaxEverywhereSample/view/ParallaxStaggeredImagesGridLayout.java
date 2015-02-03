@@ -140,6 +140,8 @@ public class ParallaxStaggeredImagesGridLayout extends ScrollView {
 
         //Log.i(TAG, "screen size: (" + screenWidth + "," + screenHeight + ")");
 
+		mScrollSpaceY = 100;
+
         mItemScrollPathPx = dpToPx(100f + 190f + 40f, getContext()) + screenHeight;
         mDeltaYPx = getScrollSpaceY() / mItemScrollPathPx;
     }
@@ -155,16 +157,25 @@ public class ParallaxStaggeredImagesGridLayout extends ScrollView {
         int[] location = new int[2];
         getLocationOnScreen(location);
 
+		int[] locationGridView = new int[2];
+		mImagesGridView.getLocationOnScreen(locationGridView);
+
         if (mScrollSpaceY != 0) {
             float locationY = (float) location[1];
-            locationY = (int)(locationY + 0.2*viewHeight);
-            float newLocationY = locationY / (screenHeight) + mDeltaYPx;
+            locationY = (int)(locationY + 0.9*viewHeight);
+			float newLocationY = locationY / (screenHeight);
 
             if (getTag() == "test_1" || getTag() == "test_3" ||
                     getTag() == "test_0" || getTag() == "test_2") {
+				Log.i(TAG, "tag:" + getTag() + ", newLocationY=" + newLocationY);
+				Log.i(TAG, "tag:" + getTag() + ", mDeltaYPx=" + mDeltaYPx);
                 Log.i(TAG, "tag:" + getTag() + ", locationY=" + locationY);
+				Log.i(TAG, "tag:" + getTag() + ", viewHeight=" + viewHeight);
                 Log.i(TAG, "tag:" + getTag() + ", ImageView width=" + mImagesGridView.getWidth());
                 Log.i(TAG, "tag:" + getTag() + ", ImageView height=" + mImagesGridView.getHeight());
+
+				Log.i(TAG, "tag:" + getTag() + ", ScrollView top=" + location[1]);
+				Log.i(TAG, "tag:" + getTag() + ", GridView top=" + locationGridView[1]);
             }
 
             if (mIsReverseY) {
@@ -172,6 +183,10 @@ public class ParallaxStaggeredImagesGridLayout extends ScrollView {
                 setMyScrollY(scrollValue);
             } else {
                 scrollValue = (int) (newLocationY * mScrollSpaceY);
+				if (getTag() == "test_2") {
+					Log.i(TAG, "tag:" + getTag() + ", scrollValue=" + scrollValue);
+				}
+
                 setMyScrollY(scrollValue);
             }
         } else {
