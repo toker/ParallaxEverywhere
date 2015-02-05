@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.fmsirvent.ParallaxEverywhereSample.R;
 import com.fmsirvent.ParallaxEverywhereSample.model.CustomData;
-import com.fmsirvent.ParallaxEverywhereSample.view.ParallaxStaggeredImagesGridLayout;
+import com.fmsirvent.ParallaxEverywhereSample.view.ParallaxStaggeredImagesGridView;
 import com.fmsirvent.ParallaxEverywhereSample.view.ParallaxedImageView2;
 
 import java.util.ArrayList;
@@ -95,7 +95,7 @@ public class ImagesGridAdapter extends BaseAdapter {
 				convertView = mInflater.inflate(R.layout.listitem2, null);
 
 				viewHolder = new ViewHolder();
-				viewHolder.parallaxGridLayout = (ParallaxStaggeredImagesGridLayout) convertView.
+				viewHolder.parallaxGridLayout = (ParallaxStaggeredImagesGridView) convertView.
 						findViewById(R.id.images_grid);
 				viewHolder.text = (TextView) convertView.findViewById(R.id.text);
 				convertView.setTag(viewHolder);
@@ -124,7 +124,7 @@ public class ImagesGridAdapter extends BaseAdapter {
     }
 
     public static class ViewHolder {
-        ParallaxStaggeredImagesGridLayout parallaxGridLayout;
+        ParallaxStaggeredImagesGridView parallaxGridLayout;
         TextView text;
     }
 

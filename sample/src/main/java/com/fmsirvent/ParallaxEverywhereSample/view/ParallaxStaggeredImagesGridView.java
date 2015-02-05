@@ -1,29 +1,24 @@
 package com.fmsirvent.ParallaxEverywhereSample.view;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Point;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Display;
-import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.ScrollView;
 
 import com.fmsirvent.ParallaxEverywhereSample.R;
 import com.fmsirvent.ParallaxEverywhereSample.util.Logger;
 
-import java.util.Random;
-
 /**
  * Created by toker-rg on 02.02.15.
  */
-public class ParallaxStaggeredImagesGridLayout extends ScrollView {
+public class ParallaxStaggeredImagesGridView extends ScrollView {
 
     private static final String TAG = Logger.getTag(ParallaxedImageView.class);
 
@@ -49,16 +44,16 @@ public class ParallaxStaggeredImagesGridLayout extends ScrollView {
     private float mItemScrollPathPx = 0.0f;
 
 
-    public ParallaxStaggeredImagesGridLayout(Context context) {
+    public ParallaxStaggeredImagesGridView(Context context) {
         this(context, null, 0);
     }
 
-    public ParallaxStaggeredImagesGridLayout(Context context, AttributeSet attrs) {
+    public ParallaxStaggeredImagesGridView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ParallaxStaggeredImagesGridLayout(Context context, AttributeSet attrs,
-                                             int defStyleAttr) {
+    public ParallaxStaggeredImagesGridView(Context context, AttributeSet attrs,
+										   int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         inflate(getContext(), R.layout.layout_parallax_stagered_images_grid, this);

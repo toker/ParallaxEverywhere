@@ -3,7 +3,10 @@ package com.fmsirvent.ParallaxEverywhereSample.view;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -50,15 +53,15 @@ public class ParallaxedImageView2 extends ScrollView {
 
     private boolean mIsReverseY = false;
 
-    /**
+	/**
      * Figured out experimentally.
      * Depends on height of scrollview container and
      *  height of parallaxed imageview
      */
-    private float mScrollSpaceY = 480;
+    private float mScrollSpaceY = 380;
 
-    private float mDeltaYPx = 0;
-    private float mItemScrollPathPx = 0.0f;
+    /*private float mDeltaYPx = 0;
+    private float mItemScrollPathPx = 0.0f;*/
 
 
     public ParallaxedImageView2(Context context) {
@@ -105,11 +108,6 @@ public class ParallaxedImageView2 extends ScrollView {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-
-        ViewGroup.LayoutParams params = getLayoutParams();
-        //mImageView.setLayoutParams(params);
-
-        Log.i(TAG, "LayoutParams size: (" + params.width + "," + params.height + ")");
     }
 
 
@@ -128,8 +126,25 @@ public class ParallaxedImageView2 extends ScrollView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        //Log.i(TAG, "onDraw called");
         super.onDraw(canvas);
+
+		/*if (getTag() == "test_3") {
+			Log.i(TAG, "onDraw called");
+
+			Paint paint = new Paint();
+			paint.setColor(Color.RED);
+			paint.setStrokeWidth(60);
+
+			int[] location = new int[2];
+			int[] parentLocation = new int[2];
+ 			getLocationOnScreen(location);
+			((View)getParent()).getLocationOnScreen(parentLocation);
+
+			//canvas.drawPoint(location[0], location[1]-1000, paint);
+			canvas.drawPoint(getLeft(), parentLocation[1] + getTop(), paint);
+
+			Log.i(TAG, "left=" + getLeft() + ", top=" + getTop());
+		}*/
     }
 
     public void setImageBitmap(Bitmap bitmap) {
@@ -153,8 +168,8 @@ public class ParallaxedImageView2 extends ScrollView {
 
         //Log.i(TAG, "screen size: (" + screenWidth + "," + screenHeight + ")");
 
-        mItemScrollPathPx = dpToPx(100f + 190f + 40f, getContext()) + screenHeight;
-        mDeltaYPx = getScrollSpaceY() / mItemScrollPathPx;
+        /*mItemScrollPathPx = dpToPx(100f + 190f + 40f, getContext()) + screenHeight;
+        mDeltaYPx = getScrollSpaceY() / mItemScrollPathPx;*/
     }
 
     /**
@@ -168,16 +183,29 @@ public class ParallaxedImageView2 extends ScrollView {
         int[] location = new int[2];
         getLocationOnScreen(location);
 
+		int[] locationImageView = new int[2];
+		mImageView.getLocationOnScreen(locationImageView);
+
         if (mScrollSpaceY != 0) {
             float locationY = (float) location[1];
-            locationY = (int)(locationY + 0.2*viewHeight);
-            float newLocationY = locationY / (screenHeight) + mDeltaYPx;
+            //locationY = (int)(locationY + 0.2*viewHeight);
+			locationY = (int)(locationY + 0.25*screenHeight);
+            float newLocationY = locationY / (screenHeight) /*+ mDeltaYPx*/;
 
-            if (getTag() == "test_1" || getTag() == "test_3" ||
-                    getTag() == "test_0" || getTag() == "test_2") {
+            /*if (getTag() == "test_1" || getTag() == "test_3" ||
+                    getTag() == "test_0" || getTag() == "test_2")*/
+			if (getTag() == "test_3") {
                 Log.i(TAG, "tag:" + getTag() + ", locationY=" + locationY);
-                Log.i(TAG, "tag:" + getTag() + ", ImageView width=" + mImageView.getWidth());
+				Log.i(TAG, "tag:" + getTag() + ", newLocationY=" + newLocationY);
                 Log.i(TAG, "tag:" + getTag() + ", ImageView height=" + mImageView.getHeight());
+				Log.i(TAG, "tag:" + getTag() + ", ScrollView height=" + getHeight());
+				Log.i(TAG, "tag:" + getTag() + ", ScrollView top=" + location[1]);
+				Log.i(TAG, "tag:" + getTag() + ", ImageView top=" + locationImageView[1]);
+
+				int diff = location[1] - locationImageView[1];
+				Log.i(TAG, "tag:" + getTag() + ", ScrollView_top - ImageView_top=" + diff);
+
+				Log.i(TAG, "tag:" + getTag() + "add for locY" + 0.25*screenHeight);
             }
 
             if (mIsReverseY) {
@@ -193,7 +221,7 @@ public class ParallaxedImageView2 extends ScrollView {
     }
 
     private void setMyScrollY(int value) {
-        if (getTag() == "test_11") {
+        if (getTag() == "test_3") {
             Log.i(TAG, "tag:" + getTag() + ", scrollValue=" + value);
             Log.i(TAG, "===============================");
         }

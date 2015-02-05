@@ -8,13 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fmsirvent.ParallaxEverywhereSample.R;
 import com.fmsirvent.ParallaxEverywhereSample.model.CustomData;
-import com.fmsirvent.ParallaxEverywhereSample.view.ParallaxStaggeredImagesGridLayout;
-import com.fmsirvent.ParallaxEverywhereSample.view.ParallaxedImageView;
 import com.fmsirvent.ParallaxEverywhereSample.view.ParallaxedImageView2;
 
 import java.util.ArrayList;
